@@ -16,4 +16,4 @@ const CharacterSchema = new Schema({
 	}
 }, { timestamps: true })
 
-module.exports(mongoose.model('Character', CharacterSchema));
+module.exports = CharacterSchema;

@@ -1,4 +1,4 @@
-const CharacterSchema = require('./Character');
-const MovieSchema = require('./Movie');
+const Character = require('./Character');
+const Movie = require('./Movie');
 
-module.exports({CharacterSchema, MovieSchema});
+module.exports = { Character, Movie };

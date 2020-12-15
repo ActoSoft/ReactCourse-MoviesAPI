@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const { mongoDBConnection } = require('./src/connections');
+const router = require('./src/routers');
 
 const app = express();
 dotenv.config();
@@ -17,8 +18,13 @@ const setupDatabase = async () => {
 	await mongoDBConnection();
 }
 
+const setupRoutes = () => {
+  app.use('/', router);
+}
+
 app.listen(process.env.PORT, async () => {
   console.log(`React Course Backend running on port ${process.env.PORT}`);
 	setupServer();
 	await setupDatabase();
+	setupRoutes();
 });
