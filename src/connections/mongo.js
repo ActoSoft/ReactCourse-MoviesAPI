@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { convertToBase64 } = require('../utils');
 
 module.exports = () => {
-	mongoose.connect(convertToBase64(process.env.DB_URL || ''), {
+	mongoose.connect(convertToBase64(process.env.MOVIE_DB_URL || ''), {
 		useUnifiedTopology: true,
 		useNewUrlParser: true
 	})

@@ -7,6 +7,12 @@ class BaseController {
       message: Errors.validator.badRequest,
       errors: validatorResult.errors
     });
+	};
+
+	static returnNotEqualIdError = (res) => {
+    return res.status(HttpCodes.badRequest).json({
+      message: Errors.validator.invalidId
+    });
   };
 
 	static returnResponse = (result, res) => {
