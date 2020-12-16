@@ -6,6 +6,7 @@ class MovieRepository {
 		return Movie
 			.find()
 			.sort('title')
+			.select({characters: 0})
 			.then(movies => movies)
 			.catch(error => error)
 	};
