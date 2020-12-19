@@ -15,15 +15,17 @@ class CharacterRepository {
 	};
 
 	static updateCharacter = async (character, movieId, characterId) => {
-		console.log('updating')
 		return Movie
-			.findOne(
-				{ _id: movieId, 'characters': Mongoose.Types.ObjectId(characterId) }
+			.findOneAndUpdate(
+				{ _id: movieId, characters: { $elemMatch: { _id: characterId }}},
+				{ $set: {
+					'characters.$.name': character.name,
+					'characters.$.img': character.img,
+					'characters.$.biography': character.biography
+				}},
+				{ new: true }
 			)
-			.then(movie => {
-				console.log(movie);
-				return movie;
-			})
+			.then(movie => movie)
 			.catch(error => error)
 	};
 
