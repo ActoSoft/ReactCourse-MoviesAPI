@@ -26,7 +26,7 @@
 - `/movies/ (POST)` -> Create new movie
 - `/movies/:id (PUT)` -> Update movie
 - `/movies/:id (DELETE)`-> Delete movie
- - `/movies/:id/characters/ (POST)`
+ - `/movies/:id/characters/ (POST)` -> Create character in movie
  - `/movies/:id/characters/:characterId (PUT)` -> Update character in movie
  - `/movies/:id/characters/:characterId (DELETE)` -> Delete character in movie
 
