@@ -29,17 +29,17 @@ class CharacterService {
 		};
 	};
 
-	// static deleteMovie = async (movieId) => {
-	// 	try{
-	// 		const movieDeleted = await MovieRepository.deleteMovie(movieId);
-	// 		if (!movieDeleted) {
-	// 			return serviceResult({ ...formatMessage(Errors.movie.failedDelete) }, true);
-	// 		}
-	// 		return serviceResult({ movie: movieDeleted, ...formatMessage(Success.movie.deleted) });
-	// 	} catch (error) {
-	// 		return serviceResult({ error, ...formatMessage(Errors.movie.failedDelete) }, true);
-	// 	};
-	// };
+	static deleteCharacter = async (movieId, characterId) => {
+		try {
+			const characterDeleted = await CharacterRepository.deleteCharacter(movieId, characterId)
+			if (!characterDeleted) {
+				return serviceResult({ ...formatMessage(Errors.character.failedUpdate) }, true);
+			}
+			return serviceResult({ ...formatMessage(Success.character.deleted) });
+		} catch (error) {
+			return serviceResult({ error, ...formatMessage(Errors.character.failedDelete) }, true);
+		}
+	};
 
 }
 

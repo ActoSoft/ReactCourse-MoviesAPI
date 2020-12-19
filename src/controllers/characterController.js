@@ -6,7 +6,7 @@ const { checkEqualId } = require('../utils');
 
 class CharacterController {
 
-	static createMovie = async (req, res) => {
+	static createCharacter = async (req, res) => {
 		const validatorResult = validateRequest(validatorsConsts.createCharacter, req.body);
 		if (validatorResult.hasError) return BaseController.returnValidatorResultError(validatorResult, res);
 		const createCharacterPayload = req.body;
@@ -15,7 +15,7 @@ class CharacterController {
 		return BaseController.returnResponse(result, res);
 	};
 
-	static updateMovie = async (req, res) => {
+	static updateCharacter = async (req, res) => {
 		const validatorResult = validateRequest(validatorsConsts.updateCharacter, req.body);
 		if (validatorResult.hasError) return BaseController.returnValidatorResultError(validatorResult, res);
 		const updateCharacterPayload = req.body;
@@ -28,11 +28,12 @@ class CharacterController {
 		return BaseController.returnResponse(result, res);
 	};
 
-	// static deleteMovie = async(req, res) => {
-	// 	const movieId = req.params.movieId;
-	// 	const result = await MovieService.deleteMovie(movieId);
-	// 	return BaseController.returnResponse(result, res);
-	// };
+	static deleteCharacter = async(req, res) => {
+		const movieId = req.params.movieId;
+		const characterId = req.params.characterId;
+		const result = await CharacterService.deleteCharacter(movieId, characterId);
+		return BaseController.returnResponse(result, res);
+	};
 
 };
 

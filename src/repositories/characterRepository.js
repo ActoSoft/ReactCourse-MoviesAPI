@@ -1,5 +1,4 @@
-const { Mongoose } = require('mongoose');
-const { Character, Movie } = require('../models');
+const { Movie } = require('../models');
 
 class CharacterRepository {
 
@@ -29,12 +28,16 @@ class CharacterRepository {
 			.catch(error => error)
 	};
 
-	// static deleteMovie = async (movieId) => {
-	// 	return Movie
-	// 		.deleteOne({ _id: movieId })
-	// 		.then(movie => movie)
-	// 		.catch(error => error)
-	// };
+	static deleteCharacter = async (movieId, characterId) => {
+		return Movie
+			.findOneAndUpdate(
+				{ _id: movieId },
+				{ $pull: {characters: { _id: characterId } } },
+				{ new: true }
+			)
+			.then(movie => movie)
+			.catch(error => error)
+	};
 
 };
 
